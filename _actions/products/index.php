@@ -5,6 +5,7 @@ use Libs\Database\MySQL;
 use Libs\Database\ProductsTable;
 
 $table = new ProductsTable(new MySQL());
+
 $filters = [
     'q'          => $_GET['q'] ?? '',
     'status'     => $_GET['status'] ?? '',
@@ -102,7 +103,6 @@ if ($hasFilter) {
 
 
         </form>
-
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="mb-0">Products</h4>

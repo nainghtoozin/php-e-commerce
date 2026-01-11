@@ -328,4 +328,38 @@ class ProductsTable
 
         return $stmt->fetchAll();
     }
+
+    public function paginate($limit, $offset, $filters = [])
+    {
+        $sql = "
+        SELECT 
+            p.*,
+            c.name AS category,
+            pi.image,
+            i.quantity
+        FROM products p
+        JOIN categories c ON c.id = p.category_id
+        LEFT JOIN product_images pi 
+            ON pi.product_id = p.id AND pi.is_primary = 1
+        LEFT JOIN inventories i ON i.product_id = p.id
+        WHERE p.deleted_at IS NULL
+        ORDER BY p.id DESC
+        LIMIT :limit OFFSET :offset
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function countAll()
+    {
+        $stmt = $this->db->query("
+        SELECT COUNT(*) FROM products WHERE deleted_at IS NULL
+    ");
+        return $stmt->fetchColumn();
+    }
 }
