@@ -132,4 +132,10 @@ class UsersTable
 
 		return $statement->rowCount();
 	}
+
+	public function countAll()
+	{
+		$stmt = $this->db->query("SELECT COUNT(*) FROM users");
+		return $stmt->fetchColumn();
+	}
 }

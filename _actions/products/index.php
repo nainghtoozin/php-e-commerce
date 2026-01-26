@@ -3,6 +3,9 @@ include("../../vendor/autoload.php");
 
 use Libs\Database\MySQL;
 use Libs\Database\ProductsTable;
+use Helpers\Auth;
+
+$auth = Auth::check();
 
 $table = new ProductsTable(new MySQL());
 
@@ -108,6 +111,9 @@ if ($hasFilter) {
             <h4 class="mb-0">Products</h4>
             <a href="create.php" class="btn btn-primary btn-sm">
                 + Add Product
+            </a>
+            <a href="../dashboard.php" class="btn btn-success ms-2">
+                <i class="bi bi-arrow-left"></i> Back
             </a>
         </div>
 

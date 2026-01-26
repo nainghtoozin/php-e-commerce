@@ -3,8 +3,11 @@
 use Libs\Database\CategoriesTable;
 use Libs\Database\MySQL;
 use Libs\Database\ProductsTable;
+use Helpers\Auth;
 
 include("../../vendor/autoload.php");
+
+$auth = Auth::check();
 
 $id = $_GET['id'] ?? null;
 if (!$id) {

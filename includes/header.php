@@ -41,12 +41,13 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-white text-center py-3">📚 Bookshop Admin</h4>
-        <a href="#">Dashboard</a>
-        <a href="../_actions/categories/index.php">Categrories</a>
-        <a href="../_actions/products/index.php">Products</a>
-        <a href="#">Users</a>
-        <a href="#">Settings</a>
+        <h4 class="text-white text-center py-3">📚 Admin</h4>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="categories/index.php">Categories</a>
+        <a href="products/index.php">Products</a>
+        <a href="orders/index.php">Orders</a>
+        <a href="../../admin.php">Users</a>
+        <a href="../../profile.php">Profile</a>
     </div>
 
     <!-- Main Content -->
@@ -54,10 +55,10 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
             <div class="container-fluid">
-                <span class="navbar-brand">Dashboard</span>
+                <span class="navbar-brand"><?= $title ?? 'Dashboard' ?></span>
                 <div class="d-flex">
-                    <button class="btn btn-outline-secondary btn-sm me-2">Profile</button>
-                    <button class="btn btn-outline-danger btn-sm">Logout</button>
+                    <a href="../../profile.php" class="btn btn-outline-secondary btn-sm me-2">Profile</a>
+                    <a href="logout.php" class="btn btn-outline-danger btn-sm">Logout</a>
                 </div>
             </div>
         </nav>

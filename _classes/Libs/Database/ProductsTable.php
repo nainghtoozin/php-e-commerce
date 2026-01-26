@@ -362,4 +362,27 @@ class ProductsTable
     ");
         return $stmt->fetchColumn();
     }
+
+    public function getLatest($limit = 5)
+    {
+        $sql = "SELECT 
+                p.*,
+                c.name AS category,
+                pi.image,
+                i.quantity
+            FROM products p
+            JOIN categories c ON c.id = p.category_id
+            LEFT JOIN product_images pi 
+                ON pi.product_id = p.id AND pi.is_primary = 1
+            LEFT JOIN inventories i ON i.product_id = p.id
+            WHERE p.deleted_at IS NULL
+            ORDER BY p.created_at DESC
+            LIMIT :limit";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

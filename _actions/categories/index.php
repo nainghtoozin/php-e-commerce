@@ -3,6 +3,9 @@ include("../../vendor/autoload.php");
 
 use Libs\Database\CategoriesTable;
 use Libs\Database\MySQL;
+use Helpers\Auth;
+
+$auth = Auth::check();
 
 $table = new CategoriesTable(new MySQL());
 $categories = $table->getAll();

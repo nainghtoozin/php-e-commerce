@@ -2,8 +2,11 @@
 
 use Libs\Database\ProductsTable;
 use Libs\Database\MySQL;
+use Helpers\Auth;
 
 include("../../vendor/autoload.php");
+
+$auth = Auth::check();
 
 $id = $_GET['id'] ?? null;
 if (!$id) exit;

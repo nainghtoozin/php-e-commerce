@@ -68,4 +68,10 @@ class CategoriesTable
             return $e->getMessage();
         }
     }
+
+    public function countAll()
+    {
+        $stmt = $this->db->query("SELECT COUNT(*) FROM categories");
+        return $stmt->fetchColumn();
+    }
 }

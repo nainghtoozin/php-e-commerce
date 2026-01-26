@@ -4,11 +4,14 @@ namespace Helpers;
 
 class Auth
 {
-	static $loginUrl = '/index.php';
+	static $loginUrl = '/login.php';
 
 	static function check()
 	{
-		session_start();
+		if (session_status() === PHP_SESSION_NONE) {
+			session_start();
+		}
+		
 		if (isset($_SESSION['user'])) {
 			return $_SESSION['user'];
 		} else {

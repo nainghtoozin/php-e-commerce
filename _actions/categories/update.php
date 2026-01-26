@@ -2,8 +2,11 @@
 
 use Libs\Database\CategoriesTable;
 use Libs\Database\MySQL;
+use Helpers\Auth;
 
 include("../../vendor/autoload.php");
+
+$auth = Auth::check();
 
 $id = $_POST['id'];
 $data = [

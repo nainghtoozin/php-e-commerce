@@ -3,6 +3,9 @@ include("../../vendor/autoload.php");
 
 use Libs\Database\MySQL;
 use Libs\Database\ProductsTable;
+use Helpers\Auth;
+
+$auth = Auth::check();
 
 function slugify($text)
 {
